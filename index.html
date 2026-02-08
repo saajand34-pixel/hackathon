@@ -53,9 +53,24 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
             font-size: 22px;
             color: #00eaff;
             letter-spacing: 2px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border: 2px solid #00eaff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00eaffaa;
+        }
+
+        .nav-links {
+            display: flex;
         }
 
         .nav-links a {
@@ -67,6 +82,21 @@
 
         .nav-links a:hover {
             color: #00eaff;
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: #00eaff;
+            margin: 3px 0;
+            transition: 0.3s;
         }
 
         /* Hero Section */
@@ -221,16 +251,46 @@
             50% { transform: translateY(-20px); }
         }
 
-        /* Responsive */
+        /* Mobile Styles */
         @media (max-width: 768px) {
             nav {
                 padding: 20px 30px;
             }
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 30px;
+                background: #020412;
+                border: 1px solid #00eaff;
+                border-radius: 8px;
+                padding: 10px;
+                flex-direction: column;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
             .hero h1 {
                 font-size: 40px;
             }
+            .hero p {
+                font-size: 16px;
+            }
             section {
                 padding: 60px 30px;
+            }
+            section h2 {
+                font-size: 30px;
+            }
+            section p {
+                font-size: 16px;
             }
             .events-list {
                 flex-direction: column;
@@ -240,21 +300,33 @@
                 width: 100%;
                 max-width: 300px;
             }
+            .btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+            .circle {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo">⚡ HACKATHON</div>
-        <div class="nav-links">
+        <div class="logo">
+            <img src="https://www.sfgc.ac.in/assets/img/logo.png" alt="College Logo">
+            ⚡ HACKATHON
+        </div>
+        <div class="nav-links" id="nav-links">
             <a href="#hero">Home</a>
             <a href="#about">About</a>
             <a href="#events">Events</a>
             <a href="#location">Locations</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform"
-   target="_blank">
-   <button>Register Now</button>
-</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform?usp=dialog" target="_blank">Register</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </nav>
 
@@ -303,5 +375,14 @@
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
