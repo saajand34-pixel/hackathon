@@ -100,6 +100,59 @@
         .info-card b { display: block; color: #00eaff; font-family: 'Orbitron', sans-serif; margin-bottom: 5px; }
 
         footer { text-align: center; padding: 40px; border-top: 1px solid rgba(0, 234, 255, 0.2); font-size: 14px; }
+
+        /* --- MOBILE STYLES --- */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            .logo {
+                font-size: 18px;
+            }
+            .logo img {
+                height: 30px;
+            }
+            .nav-links {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-left: 0;
+            }
+            .nav-links a {
+                margin-left: 0;
+                font-size: 14px;
+                text-align: center;
+                padding: 5px 0;
+            }
+            .nav-links a:nth-child(5) {
+                grid-column: span 2; /* Contact spans both columns for third line */
+            }
+            .hero {
+                padding-top: 100px;
+            }
+            .hero h1 {
+                font-size: clamp(25px, 6vw, 50px);
+            }
+            .container {
+                padding: 80px 15px;
+            }
+            .sub-section {
+                padding: 30px;
+                margin-bottom: 40px;
+            }
+            .sub-section h2 {
+                font-size: 24px;
+            }
+            .sub-section p {
+                font-size: 16px;
+            }
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+            footer {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
