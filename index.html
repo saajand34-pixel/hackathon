@@ -163,88 +163,43 @@
     </footer>
 
     <script>
-        // STARS LAYER
-        for (let i = 0; i < 120; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            const size = Math.random() * 2 + 1 + 'px';
-            star.style.width = size; star.style.height = size;
-            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-            document.body.appendChild(star);
-        }
-
-        // MATRIX RAIN LAYER
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, columns, drops;
-        function init() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            columns = Math.floor(width / 20);
-            drops = Array(columns).fill(1);
-        }
-        function draw() {
-            ctx.fillStyle = "rgba(2, 4, 18, 0.1)";
-            ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = "#00eaff";
-            ctx.font = "15px monospace";
-            for (let i = 0; i < drops.length; i++) {
-                const text = String.fromCharCode(0x30A0 + Math.random() * 96);
-                ctx.fillText(text, i * 20, drops[i] * 20);
-                if (drops[i] * 20 > height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-// STARS GENERATION (Twinkling Stars)
-const container = document.getElementById('bg-container');
-for (let i = 0; i < 120; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random() * 100 + 'vw';
-    star.style.top = Math.random() * 100 + 'vh';
-    const size = Math.random() * 2 + 1 + 'px';
-    star.style.width = size; star.style.height = size;
-    star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-    container.appendChild(star);
-}
-
-// MATRIX RAIN (Falling Characters - Star Rain Effect)
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let width, height, columns, drops;
-function init() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    columns = Math.floor(width / 20);
-    drops = Array(columns).fill(1);
-}
-function draw() {
-    ctx.fillStyle = "rgba(2, 4, 18, 0.1)";
-    ctx.fillRect(0, 0, width, height);
-    ctx.fillStyle = "#00eaff";
-    ctx.font = "15px monospace";
-    for (let i = 0; i < drops.length; i++) {
-        const text = String.fromCharCode(0x30A0 + Math.random() * 96);
-        ctx.fillText(text, i * 20, drops[i] * 20);
-        if (drops[i] * 20 > height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
+    // STARS GENERATION (Twinkling Stars)
+    for (let i = 0; i < 120; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        const size = Math.random() * 2 + 1 + 'px';
+        star.style.width = size; star.style.height = size;
+        star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+        document.body.appendChild(star);
     }
-}
-window.onresize = init;
-init();
-setInterval(draw, 50);
 
-// HAMBURGER MENU (Optional, for mobile nav)
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-});
-        window.onresize = init;
-        init();
-        setInterval(draw, 50);
-    </script>
+    // MATRIX RAIN (Falling Characters - Star Rain Effect)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, columns, drops;
+    function init() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        columns = Math.floor(width / 20);
+        drops = Array(columns).fill(1);
+    }
+    function draw() {
+        ctx.fillStyle = "rgba(2, 4, 18, 0.1)";
+        ctx.fillRect(0, 0, width, height);
+        ctx.fillStyle = "#00eaff";
+        ctx.font = "15px monospace";
+        for (let i = 0; i < drops.length; i++) {
+            const text = String.fromCharCode(0x30A0 + Math.random() * 96);
+            ctx.fillText(text, i * 20, drops[i] * 20);
+            if (drops[i] * 20 > height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+    window.onresize = init;
+    init();
+    setInterval(draw, 50);
+</script>
 </body>
 </html>
