@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hackathon 2024</title>
+    <title>Futuristic Hackathon 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* 1. LOAD THE CUSTOM FONT */
         @font-face {
             font-family: 'MindControl';
-            /* Ensure the path to your font file is correct */
-            src: url('mind-control.otf') format('opentype'); 
+            /* Make sure the filename matches your actual file in the folder */
+            src: url('mind-control.otf') format('opentype'),
+                 url('mind-control.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -21,7 +22,6 @@
             box-sizing: border-box;
         }
 
-        /* Use Roboto for general text, MindControl for headings */
         body {
             background: #020412;
             color: white;
@@ -30,14 +30,14 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* 2. APPLY MIND CONTROL TO LOGO AND HEADINGS */
+        /* 2. APPLY MIND CONTROL TO LOGO & HEADINGS */
         .logo, h1, h2, h3 {
             font-family: 'MindControl', sans-serif !important;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* Animated futuristic glow background */
+        /* Animated futuristic background glow */
         body::before {
             content: "";
             position: fixed;
@@ -57,7 +57,7 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Navbar */
+        /* Navbar Styling */
         nav {
             position: absolute;
             top: 0;
@@ -73,15 +73,13 @@
             display: flex;
             align-items: center;
             font-size: 24px;
-            color: #00eaff;
-            line-height: 1.8; /* Fixed clipping for tall font letters */
+            color: #00eaff; /* Cyan color matching your branding */
+            line-height: 2; /* Prevents tall letters from being clipped */
         }
 
         .logo img {
             width: 40px;
-            height: auto;
             margin-right: 12px;
-            background: transparent;
         }
 
         .nav-links {
@@ -95,8 +93,7 @@
             color: #cfefff;
             transition: 0.3s;
             font-size: 16px;
-            line-height: 2; /* Ensures tall letters are visible */
-            background: transparent !important;
+            line-height: 2;
         }
 
         .nav-links a:hover {
@@ -104,7 +101,7 @@
             text-shadow: 0 0 10px #00eaff;
         }
 
-        /* Hero Section */
+        /* Hero Heading */
         .hero {
             height: 100vh;
             display: flex;
@@ -112,132 +109,47 @@
             align-items: center;
             text-align: center;
             flex-direction: column;
-            position: relative;
-            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 60px;
-            /* Maintaining the cyan gradient from your original design */
+            font-size: clamp(40px, 8vw, 75px);
+            /* Gradient using your cyan and deep blue colors */
             background: linear-gradient(90deg, #00eaff, #0077ff);
             -webkit-background-clip: text;
             color: transparent;
             margin-bottom: 20px;
             line-height: 1.2;
-            /* Added glow to emphasize the font shape */
-            text-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+            text-shadow: 0 0 20px rgba(0, 234, 255, 0.4);
         }
 
         .btn {
             padding: 16px 40px;
-            border: none;
             border-radius: 12px;
             font-size: 18px;
             background: linear-gradient(90deg, #00eaff, #0077ff);
             color: white;
-            cursor: pointer;
-            transition: 0.3s;
             text-decoration: none;
+            transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
             display: inline-block;
-            font-family: 'Roboto', sans-serif; /* Buttons stay readable */
         }
 
-        .btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 25px #00eaffaa;
-        }
-
-        /* Section Styling */
+        /* About Section Sequence */
         section {
             padding: 80px 60px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         section h2 {
             font-size: 40px;
             color: #00eaff;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        section p {
-            color: #9fdfff;
-            font-size: 18px;
-            line-height: 1.6;
+        .about-content {
             max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        .about-sub h3 {
-            font-size: 28px;
-            color: #00eaff;
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-
-        .about-content img {
-            width: 60px;
-            margin-bottom: 20px;
-        }
-
-        /* Event Cards */
-        .events-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .event-item {
-            background: rgba(0, 234, 255, 0.1);
-            border: 1px solid #00eaff;
-            border-radius: 12px;
-            padding: 25px;
-            width: 300px;
-            transition: 0.3s;
-        }
-
-        .event-item h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        /* Location Card */
-        .location {
-            background: rgba(0, 119, 255, 0.1);
-            border: 1px solid #0077ff;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 900px;
             margin: 0 auto;
-        }
-
-        .map-container {
-            margin-bottom: 25px;
-            border: 1px solid #00eaff;
-            border-radius: 12px;
-            overflow: hidden;
-            /* Futuristic dark filter */
-            filter: grayscale(1) invert(0.9) hue-rotate(180deg) brightness(0.9);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 350px;
-            display: block;
-        }
-
-        .address-details {
-            text-align: left;
-            color: #cfefff;
-        }
-
-        footer {
-            padding: 40px 60px;
-            text-align: center;
-            border-top: 1px solid #00eaff;
+            line-height: 1.8;
             color: #9fdfff;
         }
     </style>
@@ -248,62 +160,39 @@
             <img src="logo.png" alt="⚡">
             HACKATHON
         </div>
-        <div class="nav-links" id="nav-links">
+        <div class="nav-links">
             <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#events">Events</a>
+            <a href="#about-set">About</a> <a href="#events">Events</a>
             <a href="#location">Locations</a>
-            <a href="https://docs.google.com/forms/..." target="_blank">Register</a>
+            <a href="https://docs.google.com/forms/d/..." target="_blank">Register</a>
         </div>
     </nav>
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
         <p style="color: #9fdfff; font-size: 18px; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
-        <a href="https://docs.google.com/forms/..." target="_blank" class="btn">Register Now</a>
+        <a href="https://docs.google.com/forms/d/..." class="btn">Register Now</a>
     </div>
 
-    <section id="about">
-        <h2>About</h2>
-        <div class="about-sub">
-            <h3>SET</h3>
-            <div class="about-content">
-                <img src="logo.png" alt="SET">
-                <p>Seshadripuram Educational Trust (SET) is a renowned organization dedicated to providing quality education since 1930.</p>
-            </div>
-        </div>
-        <div class="about-sub">
-            <h3>SFGC</h3>
-            <div class="about-content">
-                <img src="logo.png" alt="SFGC">
-                <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka, Bengaluru, fostering academic excellence.</p>
-            </div>
-        </div>
-        <div class="about-sub">
-            <h3>Hackathon</h3>
-            <div class="about-content">
-                <img src="logo.png" alt="Hackathon">
-                <p>A 24-hour innovation marathon organized by the Computer Department at SFGC.</p>
-            </div>
+    <section id="about-set">
+        <h2>About SET</h2>
+        <div class="about-content">
+            <p>Seshadripuram Educational Trust (SET) is a pioneering educational organization in Karnataka, dedicated to quality education since 1930.</p>
         </div>
     </section>
 
-    <section id="location">
-        <h2>Location</h2>
-        <div class="location">
-            <h3>Seshadripuram First Grade College</h3>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?..." allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="address-details">
-                <p><strong>Address:</strong> C.A., Site No. 26, Yelahanka New Town, Bengaluru, Karnataka 560064</p>
-                <p><strong>Contact:</strong> hackathon@sfgc.ac.in | +91 (80) 2846 1057</p>
-            </div>
+    <section id="about-sfgc" style="padding-top: 20px;">
+        <h2>About SFGC</h2>
+        <div class="about-content">
+            <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka, Bengaluru, fostering academic excellence.</p>
         </div>
     </section>
 
-    <footer>
-        <p>© 2024 Seshadripuram First Grade College | Powered by Innovation</p>
-    </footer>
+    <section id="about-hackathon" style="padding-top: 20px;">
+        <h2>About Hackathon</h2>
+        <div class="about-content">
+            <p>Hackathon 2024 is a 24-hour innovation marathon organized by the Computer Department at SFGC.</p>
+        </div>
+    </section>
 </body>
 </html>
