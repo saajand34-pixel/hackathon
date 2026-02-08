@@ -40,7 +40,7 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Navbar - Background removed as requested */
+        /* Navbar */
         nav {
             position: absolute;
             top: 0;
@@ -53,7 +53,6 @@
             background: transparent !important;
         }
 
-        /* Logo Fix: GitHub style, no circular background */
         .logo {
             display: flex;
             align-items: center;
@@ -61,7 +60,7 @@
             color: #00eaff;
             letter-spacing: 2px;
             font-weight: bold;
-            line-height: 1.8; /* Prevents half-visible letters */
+            line-height: 1.8; /* Fixes clipping of tall letters */
         }
 
         .logo img {
@@ -70,7 +69,6 @@
             margin-right: 12px;
             border: none !important;
             border-radius: 0 !important;
-            background: transparent !important;
         }
 
         .nav-links {
@@ -78,16 +76,16 @@
             align-items: center;
         }
 
-        /* THE FIX: Force removal of white/black box and fix clipped text */
+        /* THE FIX: Force removal of white box and fix clipped text */
         .nav-links a {
             margin-left: 30px;
             text-decoration: none;
             color: #cfefff;
             transition: 0.3s;
             font-size: 16px;
-            line-height: 2 !important; /* Vital for Orbitron visibility */
+            line-height: 2 !important; /* Fixes half-visible letters */
             
-            /* FORCE RESET - Overrides browser default button styles */
+            /* FORCE RESET for the Register Now box */
             background: transparent !important;
             background-color: transparent !important;
             border: none !important;
@@ -95,7 +93,6 @@
             appearance: none !important;
             -webkit-appearance: none !important;
             box-shadow: none !important;
-            outline: none !important;
         }
 
         .nav-links a:hover {
@@ -111,85 +108,84 @@
             align-items: center;
             text-align: center;
             flex-direction: column;
-            position: relative;
-            z-index: 1;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: clamp(32px, 8vw, 60px);
+            font-size: clamp(30px, 8vw, 60px);
             background: linear-gradient(90deg, #00eaff, #0077ff);
             -webkit-background-clip: text;
             color: transparent;
             margin-bottom: 20px;
-            line-height: 1.4; /* Fixes title clipping */
+            line-height: 1.2;
         }
 
-        /* Hero Button Styling */
         .btn {
             padding: 16px 40px;
-            border: none;
             border-radius: 12px;
             font-size: 18px;
             background: linear-gradient(90deg, #00eaff, #0077ff);
             color: white;
-            cursor: pointer;
-            transition: 0.3s;
             text-decoration: none;
+            transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
-            display: inline-block;
         }
 
         .btn:hover {
-            transform: scale(1.08);
+            transform: scale(1.05);
             box-shadow: 0 0 25px #00eaffaa;
         }
 
-        /* Location Section */
-        section { padding: 100px 60px; text-align: center; }
+        /* NEW LOCATION SECTION */
+        #location {
+            padding: 100px 20px;
+            text-align: center;
+        }
 
         .location-card {
             background: rgba(0, 119, 255, 0.05);
             border: 1px solid #0077ff;
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: 40px;
             max-width: 900px;
             margin: 0 auto;
-            box-shadow: 0 0 20px rgba(0, 119, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 119, 255, 0.15);
         }
 
         .map-container {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid #00eaff;
-            margin: 20px 0;
-            /* DARK MODE FILTER: Matches futuristic aesthetic */
+            margin: 25px 0;
+            /* Futuristic Dark Map Filter */
             filter: grayscale(1) invert(0.9) hue-rotate(180deg) brightness(0.9);
-            transition: 0.5s;
+            transition: 0.5s ease;
         }
 
-        .map-container:hover { filter: none; }
+        .map-container:hover {
+            filter: none; /* Shows real colors on hover */
+        }
 
         .map-container iframe {
             width: 100%;
-            height: 400px;
+            height: 450px;
             border: none;
             display: block;
         }
 
-        .address-details { color: #cfefff; text-align: left; }
+        .address-details {
+            text-align: left;
+            color: #cfefff;
+            font-size: 16px;
+            line-height: 1.6;
+        }
 
         footer {
             padding: 40px;
             text-align: center;
-            border-top: 1px solid #00eaff22;
+            border-top: 1px solid rgba(0, 234, 255, 0.1);
             color: #9fdfff;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 20px; }
-            .nav-links { display: none; } /* Add JS for mobile menu if needed */
         }
     </style>
 </head>
@@ -201,28 +197,32 @@
         </div>
         <div class="nav-links">
             <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#events">Events</a>
-            <a href="#location">Locations</a>
-            <a href="https://docs.google.com/forms/d/..." target="_blank">Register</a>
+            <a href="#location">Location</a>
+            <a href="https://docs.google.com/forms/d/e/..." target="_blank">Register</a>
         </div>
     </nav>
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
         <p style="color: #9fdfff; font-size: 18px; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
-        <a href="https://docs.google.com/forms/d/..." target="_blank" class="btn">Register Now</a>
+        <a href="https://docs.google.com/forms/d/e/..." target="_blank" class="btn">Register Now</a>
     </div>
 
     <section id="location">
-        <h2 style="color: #00eaff; font-size: 40px; margin-bottom: 20px;">Location</h2>
+        <h2 style="color: #00eaff; font-size: 36px; margin-bottom: 30px;">Event Location</h2>
         <div class="location-card">
             <h3 style="color: #00eaff; margin-bottom: 10px;">Seshadripuram First Grade College</h3>
+            
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.67295778841!2d77.59253487574513!3d13.088219012489673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1ec0746e5041%3A0x62804f58c42a5370!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.234606622879!2d77.5947475757912!3d13.084300312356535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1184b2c13b05%3A0x2bae303ca3a3c156!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
             </div>
+
             <div class="address-details">
-                <p><strong>Address:</strong> Yelahanka New Town, Bengaluru, Karnataka 560064</p>
+                <p><strong>Address:</strong> C.A., Site No. 26, Yelahanka New Town, Bengaluru, Karnataka 560064</p>
                 <p><strong>Contact:</strong> hackathon@sfgc.ac.in</p>
             </div>
         </div>
