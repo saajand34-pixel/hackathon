@@ -13,30 +13,29 @@
         }
 
         body {
-            background: #020412;
+            background: #020412; /* Base space color */
             color: white;
             overflow-x: hidden;
             scroll-behavior: smooth;
             font-family: 'Georgia', serif;
         }
 
-        /* --- THE DUAL-LAYER BACKGROUND --- */
+        /* --- THE ANIMATION LAYER --- */
         #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Matrix Rain layer */
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Sits exactly behind content */
+            pointer-events: none;
         }
 
-        /* Twinkling Star CSS */
         .star {
             position: fixed;
             background: white;
             border-radius: 50%;
-            opacity: 0.5;
-            z-index: -2; /* Stars are furthest back */
+            z-index: -2; /* Stars are the furthest back layer */
             animation: twinkle var(--duration) infinite ease-in-out;
         }
 
@@ -45,7 +44,7 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* --- ALL OTHER STYLES REMAIN UNCHANGED --- */
+        /* --- REST OF YOUR CODE (UNCHANGED) --- */
         nav {
             position: absolute;
             top: 0;
@@ -84,8 +83,7 @@
             align-items: center;
             text-align: center;
             flex-direction: column;
-            position: relative;
-            z-index: 1;
+            background: transparent; /* Ensures bg is visible */
         }
 
         .hero h1 {
@@ -108,14 +106,19 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-        section { padding: 80px 60px; text-align: center; position: relative; z-index: 1; }
-        section h2 { font-family: 'Orbitron', sans-serif; font-size: 40px; color: #00eaff; margin-bottom: 20px; }
-        section p { color: #9fdfff; font-size: 18px; line-height: 1.6; max-width: 800px; margin: 0 auto 40px; }
+        section { 
+            padding: 80px 60px; 
+            text-align: center; 
+            background: transparent; /* Critical: Allow bg to show through sections */
+        }
 
-        .location { background: rgba(0, 119, 255, 0.1); border: 1px solid #0077ff; border-radius: 12px; padding: 20px; }
+        section h2 { font-family: 'Orbitron', sans-serif; font-size: 40px; color: #00eaff; margin-bottom: 20px; }
+
+        .location { background: rgba(0, 119, 255, 0.1); border: 1px solid #0077ff; border-radius: 12px; padding: 20px; max-width: 800px; margin: 0 auto; }
+        
         .map-container iframe { width: 100%; height: 300px; border-radius: 12px; border: none; }
 
-        footer { padding: 40px; text-align: center; border-top: 1px solid #00eaff; font-size: 14px; position: relative; z-index: 1; }
+        footer { padding: 40px; text-align: center; border-top: 1px solid #00eaff; font-size: 14px; background: rgba(2, 4, 18, 0.8); }
     </style>
 </head>
 <body>
@@ -137,13 +140,13 @@
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
-        <p style="margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
+        <p style="margin-bottom: 40px; color: #9fdfff;">Innovate • Build • Transform the Future</p>
         <a href="#" class="btn">Register Now</a>
     </div>
 
     <section id="about">
         <h2>About</h2>
-        <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour innovation marathon is hosted by the Computer Dept.</p>
+        <p style="max-width: 800px; margin: 0 auto; color: #cfefff;">Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour innovation event is hosted by the Computer Dept.</p>
     </section>
 
     <section id="location">
@@ -152,7 +155,7 @@
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?..." allowfullscreen=""></iframe>
             </div>
-            <p style="margin-top: 20px;">Address: Yelahanka New Town, Bengaluru 560064.</p>
+            <p style="margin-top: 20px; color: #cfefff;">Yelahanka New Town, Bengaluru 560064.</p>
         </div>
     </section>
 
@@ -161,10 +164,10 @@
     </footer>
 
     <script>
-        // --- 1. GENERATE STARFIELD ---
+        // 1. STARFIELD LOGIC
         function createStars() {
-            const count = 150;
-            for (let i = 0; i < count; i++) {
+            const starContainer = document.body;
+            for (let i = 0; i < 150; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 const x = Math.random() * window.innerWidth;
@@ -177,29 +180,33 @@
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 star.style.setProperty('--duration', `${duration}s`);
-                document.body.appendChild(star);
+                starContainer.appendChild(star);
             }
         }
         createStars();
 
-        // --- 2. MATRIX RAIN ANIMATION ---
+        // 2. MATRIX RAIN LOGIC
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%&<>{}";
         const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(1);
 
         function drawMatrix() {
-            // Semi-transparent black rectangle to create trailing effect
+            // Semi-transparent black allows the stars behind it to be seen faintly
             ctx.fillStyle = "rgba(2, 4, 18, 0.1)"; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "#00eaff"; // Cyan rain color
+            ctx.fillStyle = "#00eaff"; // Cyan color from your branding
             ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
@@ -214,11 +221,6 @@
         }
 
         setInterval(drawMatrix, 50);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     </script>
 </body>
 </html>
