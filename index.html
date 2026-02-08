@@ -14,7 +14,6 @@
         }
 
         body {
-            height: 100vh;
             background: #020412;
             color: white;
             overflow-x: hidden;
@@ -24,7 +23,7 @@
         /* Animated futuristic glow */
         body::before {
             content: "";
-            position: absolute;
+            position: fixed;
             width: 700px;
             height: 700px;
             background: radial-gradient(circle, #00eaff22, transparent 70%);
@@ -33,6 +32,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             animation: rotate 18s linear infinite;
+            z-index: -1;
         }
 
         @keyframes rotate {
@@ -50,53 +50,54 @@
             justify-content: space-between;
             align-items: center;
             z-index: 10;
+            background: rgba(2, 4, 18, 0.8);
+            backdrop-filter: blur(10px);
         }
 
+        /* LOGO FIX: Removed circular constraints */
         .logo {
             display: flex;
             align-items: center;
             font-size: 22px;
             color: #00eaff;
             letter-spacing: 2px;
+            font-weight: bold;
         }
 
         .logo img {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-            border: 2px solid #00eaff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #00eaffaa;
+            width: 35px; /* Sized to match text height like GitHub */
+            height: auto;
+            margin-right: 12px;
+            /* Explicitly ensuring no circles or boxes */
+            border-radius: 0; 
+            border: none;
+            box-shadow: none;
+            background: transparent;
         }
 
         .nav-links {
             display: flex;
+            align-items: center;
         }
 
+        /* REGISTER LINK FIX: Prevents the white box */
         .nav-links a {
             margin-left: 30px;
             text-decoration: none;
             color: #cfefff;
             transition: 0.3s;
+            font-size: 16px;
+            /* Resetting browser defaults that cause the white box */
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            appearance: none;
+            -webkit-appearance: none;
         }
 
         .nav-links a:hover {
             color: #00eaff;
-        }
-
-        /* Hamburger Menu for Mobile */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background: #00eaff;
-            margin: 3px 0;
-            transition: 0.3s;
+            text-shadow: 0 0 8px #00eaff;
         }
 
         /* Hero Section */
@@ -119,14 +120,8 @@
             margin-bottom: 20px;
         }
 
-        .hero p {
-            color: #9fdfff;
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-        /* Button */
-        .btn {
+        /* The big button in the middle ONLY */
+        .hero-btn {
             padding: 16px 40px;
             border: none;
             border-radius: 12px;
@@ -136,194 +131,45 @@
             cursor: pointer;
             transition: 0.3s;
             text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
         }
 
-        .btn:hover {
+        .hero-btn:hover {
             transform: scale(1.08);
             box-shadow: 0 0 25px #00eaffaa;
         }
 
-        /* Sections */
-        section {
-            padding: 100px 60px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
+        section { padding: 100px 60px; text-align: center; }
+        .events-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .event-item { background: rgba(0, 234, 255, 0.1); border: 1px solid #00eaff; border-radius: 12px; padding: 20px; width: 300px; }
+        footer { padding: 40px; text-align: center; border-top: 1px solid #222; color: #555; }
 
-        section h2 {
-            font-size: 40px;
-            color: #00eaff;
-            margin-bottom: 20px;
-        }
+        /* Hamburger Styles for Mobile */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger div { width: 25px; height: 3px; background: #00eaff; }
 
-        section p {
-            color: #9fdfff;
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        /* Events List */
-        .events-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .event-item {
-            background: rgba(0, 234, 255, 0.1);
-            border: 1px solid #00eaff;
-            border-radius: 12px;
-            padding: 20px;
-            width: 300px;
-            transition: 0.3s;
-        }
-
-        .event-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #00eaffaa;
-        }
-
-        .event-item h3 {
-            color: #00eaff;
-            margin-bottom: 10px;
-        }
-
-        .event-item p {
-            color: #cfefff;
-        }
-
-        /* Location */
-        .location {
-            background: rgba(0, 119, 255, 0.1);
-            border: 1px solid #0077ff;
-            border-radius: 12px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .location h3 {
-            color: #00eaff;
-            margin-bottom: 10px;
-        }
-
-        .location p {
-            color: #cfefff;
-        }
-
-        /* Floating tech circles */
-        .circle {
-            position: absolute;
-            border: 2px solid #00eaff33;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .circle:nth-child(1) {
-            width: 120px;
-            height: 120px;
-            top: 20%;
-            left: 15%;
-        }
-
-        .circle:nth-child(2) {
-            width: 80px;
-            height: 80px;
-            bottom: 20%;
-            right: 20%;
-            animation-delay: 2s;
-        }
-
-        .circle:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            top: 30%;
-            right: 10%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Mobile Styles */
         @media (max-width: 768px) {
-            nav {
-                padding: 20px 30px;
-            }
-            .logo img {
-                width: 40px;
-                height: 40px;
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 60px;
-                right: 30px;
-                background: #020412;
-                border: 1px solid #00eaff;
-                border-radius: 8px;
-                padding: 10px;
-                flex-direction: column;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .hero h1 {
-                font-size: 40px;
-            }
-            .hero p {
-                font-size: 16px;
-            }
-            section {
-                padding: 60px 30px;
-            }
-            section h2 {
-                font-size: 30px;
-            }
-            section p {
-                font-size: 16px;
-            }
-            .events-list {
-                flex-direction: column;
-                align-items: center;
-            }
-            .event-item {
-                width: 100%;
-                max-width: 300px;
-            }
-            .btn {
-                padding: 12px 30px;
-                font-size: 16px;
-            }
-            .circle {
-                display: none;
-            }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            nav { padding: 20px; }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e638eaf6f155637ae6b1d0f83141c092c32a5f449e61e5087d0c2d764e64dd71bad4297421f893003f7b21f97fc90f5be" alt="College Logo">
-            ⚡ HACKATHON
+            <img src="logo.png" alt="Icon"> 
+            HACKATHON
         </div>
         <div class="nav-links" id="nav-links">
             <a href="#hero">Home</a>
             <a href="#about">About</a>
             <a href="#events">Events</a>
             <a href="#location">Locations</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform?usp=dialog" target="_blank">Register</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform" target="_blank">Register</a>
         </div>
-        <div class="hamburger" id="hamburger">
+        <div class="hamburger">
             <div></div>
             <div></div>
             <div></div>
@@ -332,57 +178,17 @@
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
-        <p>Innovate • Build • Transform the Future | Location: XYZ University Campus</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform?usp=dialog" target="_blank" class="btn">Register Now</a>
+        <p style="color: #9fdfff; font-size: 18px; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform" target="_blank" class="hero-btn">Register Now</a>
     </div>
 
     <section id="about">
         <h2>About Hackathon</h2>
-        <p>Hackathon 2024 is a 24-hour innovation marathon where tech enthusiasts come together to build cutting-edge solutions. Join us at XYZ University Campus to collaborate, code, and create the future of technology.</p>
+        <p>A 24-hour innovation marathon for tech enthusiasts.</p>
     </section>
 
-    <section id="events">
-        <h2>Events</h2>
-        <div class="events-list">
-            <div class="event-item">
-                <h3>Opening Ceremony</h3>
-                <p>March 10, 9:00 AM - Kickoff and team formation.</p>
-            </div>
-            <div class="event-item">
-                <h3>Workshop: AI Basics</h3>
-                <p>March 10, 10:30 AM - Learn AI fundamentals.</p>
-            </div>
-            <div class="event-item">
-                <h3>Hacking Session</h3>
-                <p>March 10-11, All Day - Code and innovate.</p>
-            </div>
-            <div class="event-item">
-                <h3>Judging & Awards</h3>
-                <p>March 11, 4:00 PM - Present projects and win prizes.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="location">
-        <h2>Locations</h2>
-        <div class="location">
-            <h3>XYZ University Campus</h3>
-            <p>Address: 123 Tech Street, Innovation City, State 45678, Country</p>
-            <p>Contact: hackathon@xyzuni.edu | Phone: +1 (123) 456-7890</p>
-        </div>
-    </section>
-
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-
-    <script>
-        // Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
+    <footer>
+        <p>&copy; 2024 XYZ University Computer Dept.</p>
+    </footer>
 </body>
 </html>
