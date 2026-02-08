@@ -6,7 +6,6 @@
     <title>Hackathon 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Keep all your original structural styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,39 +13,38 @@
         }
 
         body {
-            background: #020412;
+            background: #020412; /* Deep space black */
             color: white;
             overflow-x: hidden;
             scroll-behavior: smooth;
             font-family: 'Georgia', serif;
         }
 
-        /* --- THE NEW BACKGROUND SYSTEM --- */
+        /* --- BACKGROUND LAYERS --- */
         #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Ensures it stays behind your text */
+            z-index: -1; /* Matrix Rain layer */
         }
 
-        /* Twinkling Star CSS */
         .star {
             position: fixed;
             background: white;
             border-radius: 50%;
             opacity: 0.5;
-            z-index: -2;
+            z-index: -2; /* Stars are furthest back */
             animation: twinkle var(--duration) infinite ease-in-out;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* --- EVERYTHING ELSE REMAINS THE SAME --- */
+        /* --- WEBSITE CONTENT (REMAINING SAME) --- */
         nav {
             position: absolute;
             top: 0;
@@ -78,6 +76,11 @@
             font-size: 16px;
         }
 
+        .nav-links a:hover {
+            color: #00eaff;
+            text-shadow: 0 0 10px #00eaff;
+        }
+
         .hero {
             height: 100vh;
             display: flex;
@@ -85,6 +88,8 @@
             align-items: center;
             text-align: center;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -92,39 +97,29 @@
             background: linear-gradient(90deg, #00eaff, #0077ff);
             -webkit-background-clip: text;
             color: transparent;
-            font-family: 'Orbitron', sans-serif;
             margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .btn {
             padding: 16px 40px;
             border-radius: 12px;
+            font-size: 18px;
             background: linear-gradient(90deg, #00eaff, #0077ff);
             color: white;
             text-decoration: none;
+            transition: 0.3s;
             font-family: 'Orbitron', sans-serif;
             box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
         }
 
-        section { padding: 80px 60px; text-align: center; }
-        section h2 { font-family: 'Orbitron', sans-serif; color: #00eaff; font-size: 40px; margin-bottom: 20px; }
-        
-        .location { 
-            background: rgba(0, 119, 255, 0.1); 
-            border: 1px solid #0077ff; 
-            border-radius: 12px; 
-            padding: 20px; 
-            max-width: 800px; 
-            margin: 0 auto; 
-        }
+        section { padding: 80px 60px; text-align: center; position: relative; z-index: 1; }
+        section h2 { font-size: 40px; color: #00eaff; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; }
 
-        /* Ensure Google Map is visible */
-        .map-container iframe {
-            width: 100%;
-            height: 300px;
-            border-radius: 12px;
-            border: none;
-        }
+        .location { background: rgba(0, 234, 255, 0.05); border: 1px solid #00eaff; border-radius: 12px; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .map-container iframe { width: 100%; height: 300px; border-radius: 12px; border: none; }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid #00eaff; font-size: 14px; position: relative; z-index: 1; }
     </style>
 </head>
 <body>
@@ -133,7 +128,8 @@
 
     <nav>
         <div class="logo">
-            <img src="logo.png" alt="S"> HACKATHON
+            <img src="logo.png" alt="S">
+            HACKATHON
         </div>
         <div class="nav-links">
             <a href="#hero">Home</a>
@@ -145,13 +141,13 @@
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
-        <p style="color: #9fdfff; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
+        <p style="color: #9fdfff; font-size: 18px; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
         <a href="#" class="btn">Register Now</a>
     </div>
 
     <section id="about">
         <h2>About</h2>
-        <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour hackathon is hosted by the Computer Dept.</p>
+        <p>Seshadripuram First Grade College (SFGC) is located in Yelahanka, Bengaluru. This 24-hour innovation event is organized by the Computer Department.</p>
     </section>
 
     <section id="location">
@@ -160,21 +156,25 @@
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.8451121043216!2d77.59253407511082!3d13.089965187236166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1ec06560413f%3A0xc3f95410988015f6!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen=""></iframe>
             </div>
-            <p style="margin-top: 20px;">Yelahanka New Town, Bengaluru, Karnataka 560064.</p>
+            <p style="margin-top: 20px;">Yelahanka New Town, Bengaluru 560064.</p>
         </div>
     </section>
 
+    <footer>
+        <p>© 2024 Seshadripuram First Grade College | Powered by Innovation</p>
+    </footer>
+
     <script>
-        // 1. STARFIELD: Create 150 twinkling stars
+        // 1. STARFIELD: Populate the background with twinkling stars
         function createStars() {
-            const count = 150;
-            for (let i = 0; i < count; i++) {
+            const starCount = 150;
+            for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 const x = Math.random() * window.innerWidth;
                 const y = Math.random() * window.innerHeight;
-                const size = Math.random() * 2 + 1;
-                const duration = 2 + Math.random() * 4;
+                const size = Math.random() * 2 + 0.5;
+                const duration = 2 + Math.random() * 3;
                 
                 star.style.left = `${x}px`;
                 star.style.top = `${y}px`;
@@ -186,27 +186,28 @@
         }
         createStars();
 
-        // 2. MATRIX RAIN: Falling Cyan Code
+        // 2. MATRIX RAIN: Digital code falling in Cyan
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
+
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%&<>{}";
         const fontSize = 16;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
 
         function drawMatrix() {
-            // Semi-transparent black rectangle to create trailing effect
-            ctx.fillStyle = "rgba(2, 4, 18, 0.1)"; 
+            // Faint black background overlay to create a trailing effect
+            ctx.fillStyle = "rgba(2, 4, 18, 0.1)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "#00eaff"; // Your Cyan color
+            ctx.fillStyle = "#00eaff"; // Cyan color matching your theme
             ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
-                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -218,7 +219,6 @@
 
         setInterval(drawMatrix, 50);
 
-        // Handle window resizing
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
