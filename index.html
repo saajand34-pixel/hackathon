@@ -514,4 +514,6 @@
         const drops = Array(Math.floor(columns)).fill(1);
 
         function drawMatrix() {
-            // Faint black background overlay to create a
+            // Faint black background overlay to create a trailing effect
+            ctx.fillStyle = "rgba(2, 4, 18, 0.1)";
+            ctx.fillRect(0, 0, canvas.width,
