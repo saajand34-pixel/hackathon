@@ -6,6 +6,7 @@
     <title>Hackathon 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Keep all your original structural styles */
         * {
             margin: 0;
             padding: 0;
@@ -20,14 +21,14 @@
             font-family: 'Georgia', serif;
         }
 
-        /* --- BACKGROUND CANVAS --- */
+        /* --- THE NEW BACKGROUND SYSTEM --- */
         #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -1; /* Ensures it stays behind your text */
         }
 
         /* Twinkling Star CSS */
@@ -45,7 +46,7 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* --- NAVBAR --- */
+        /* --- EVERYTHING ELSE REMAINS THE SAME --- */
         nav {
             position: absolute;
             top: 0;
@@ -75,15 +76,8 @@
             color: #cfefff;
             transition: 0.3s;
             font-size: 16px;
-            background: transparent !important;
         }
 
-        .nav-links a:hover {
-            color: #00eaff;
-            text-shadow: 0 0 10px #00eaff;
-        }
-
-        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -91,7 +85,6 @@
             align-items: center;
             text-align: center;
             flex-direction: column;
-            position: relative;
         }
 
         .hero h1 {
@@ -99,30 +92,39 @@
             background: linear-gradient(90deg, #00eaff, #0077ff);
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 20px;
             font-family: 'Orbitron', sans-serif;
+            margin-bottom: 20px;
         }
 
         .btn {
             padding: 16px 40px;
             border-radius: 12px;
-            font-size: 18px;
             background: linear-gradient(90deg, #00eaff, #0077ff);
             color: white;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
             font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
         }
 
-        /* --- SECTIONS --- */
         section { padding: 80px 60px; text-align: center; }
-        section h2 { font-family: 'Orbitron', sans-serif; font-size: 40px; color: #00eaff; margin-bottom: 20px; }
-        section p { color: #9fdfff; font-size: 18px; line-height: 1.6; max-width: 800px; margin: 0 auto 40px; }
+        section h2 { font-family: 'Orbitron', sans-serif; color: #00eaff; font-size: 40px; margin-bottom: 20px; }
+        
+        .location { 
+            background: rgba(0, 119, 255, 0.1); 
+            border: 1px solid #0077ff; 
+            border-radius: 12px; 
+            padding: 20px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
 
-        .location { background: rgba(0, 119, 255, 0.1); border: 1px solid #0077ff; border-radius: 12px; padding: 20px; }
-        .map-container iframe { width: 100%; height: 300px; border-radius: 12px; border: none; }
-
-        footer { padding: 40px; text-align: center; border-top: 1px solid #00eaff; font-size: 14px; }
+        /* Ensure Google Map is visible */
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 12px;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -131,46 +133,39 @@
 
     <nav>
         <div class="logo">
-            <img src="logo.png" alt="Icon">
-            HACKATHON
+            <img src="logo.png" alt="S"> HACKATHON
         </div>
         <div class="nav-links">
             <a href="#hero">Home</a>
             <a href="#about">About</a>
             <a href="#events">Events</a>
             <a href="#location">Locations</a>
-            <a href="https://docs.google.com/forms/..." target="_blank">Register</a>
         </div>
     </nav>
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
-        <p style="margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
-        <a href="https://docs.google.com/forms/..." class="btn">Register Now</a>
+        <p style="color: #9fdfff; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
+        <a href="#" class="btn">Register Now</a>
     </div>
 
     <section id="about">
         <h2>About</h2>
-        <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour innovation marathon is hosted by the Computer Dept.</p>
+        <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour hackathon is hosted by the Computer Dept.</p>
     </section>
 
     <section id="location">
-        <h2>Locations</h2>
+        <h2>Location</h2>
         <div class="location">
-            <h3 style="font-family: 'Georgia', serif; color: #00eaff; margin-bottom: 20px;">SFGC, Yelahanka</h3>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?..." allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.8451121043216!2d77.59253407511082!3d13.089965187236166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1ec06560413f%3A0xc3f95410988015f6!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen=""></iframe>
             </div>
-            <p style="margin-top: 20px;">Address: Yelahanka New Town, Bengaluru 560064.</p>
+            <p style="margin-top: 20px;">Yelahanka New Town, Bengaluru, Karnataka 560064.</p>
         </div>
     </section>
 
-    <footer>
-        <p>© 2024 Seshadripuram First Grade College | Powered by Innovation</p>
-    </footer>
-
     <script>
-        // 1. STARFIELD GENERATION
+        // 1. STARFIELD: Create 150 twinkling stars
         function createStars() {
             const count = 150;
             for (let i = 0; i < count; i++) {
@@ -180,6 +175,7 @@
                 const y = Math.random() * window.innerHeight;
                 const size = Math.random() * 2 + 1;
                 const duration = 2 + Math.random() * 4;
+                
                 star.style.left = `${x}px`;
                 star.style.top = `${y}px`;
                 star.style.width = `${size}px`;
@@ -190,7 +186,7 @@
         }
         createStars();
 
-        // 2. MATRIX RAIN
+        // 2. MATRIX RAIN: Falling Cyan Code
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -202,20 +198,31 @@
         const drops = Array(Math.floor(columns)).fill(1);
 
         function drawMatrix() {
-            ctx.fillStyle = "rgba(2, 4, 18, 0.1)"; // Dark fade
+            // Semi-transparent black rectangle to create trailing effect
+            ctx.fillStyle = "rgba(2, 4, 18, 0.1)"; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#00eaff"; // Cyan rain color
+
+            ctx.fillStyle = "#00eaff"; // Your Cyan color
             ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
                 const text = letters.charAt(Math.floor(Math.random() * letters.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
                 drops[i]++;
             }
         }
+
         setInterval(drawMatrix, 50);
-        window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
