@@ -13,25 +13,25 @@
         }
 
         body {
-            background: #020412;
+            background: linear-gradient(135deg, #020412 0%, #0a0a2e 50%, #020412 100%); /* Modern gradient: dark blue to black for classic futuristic */
             color: white;
             overflow-x: hidden;
             scroll-behavior: smooth;
             font-family: 'Georgia', serif; /* Default to Georgia for body text */
         }
 
-        /* Animated futuristic glow */
+        /* Animated futuristic glow - Enhanced for classic elegance */
         body::before {
             content: "";
             position: fixed;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, #00eaff22, transparent 70%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 234, 255, 0.15) 0%, rgba(0, 119, 255, 0.1) 50%, transparent 70%); /* Softer glow for classic feel */
             border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: rotate 18s linear infinite;
+            animation: rotate 20s linear infinite; /* Slower rotation for elegance */
             z-index: -1;
         }
 
@@ -498,17 +498,4 @@
             </div>
             <div class="address-details">
                 <p><strong>Address:</strong> Seshadripuram First Grade College, Yelahanka, Bengaluru 560064, Karnataka</p>
-                <p><strong>Contact:</strong> hackathon@xyzuni.edu</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Seshadripuram First Grade College Computer Dept. | Powered by Innovation</p>
-    </footer>
-
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display ===
+                <p><strong>Contact:</strong> hackathon@xyzuni
