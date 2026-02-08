@@ -60,7 +60,7 @@
             color: #00eaff;
             letter-spacing: 2px;
             font-weight: bold;
-            line-height: 1.8; /* Fixes clipping of tall letters */
+            line-height: 1.8;
         }
 
         .logo img {
@@ -68,7 +68,6 @@
             height: auto;
             margin-right: 12px;
             border: none !important;
-            border-radius: 0 !important;
         }
 
         .nav-links {
@@ -76,23 +75,15 @@
             align-items: center;
         }
 
-        /* THE FIX: Force removal of white box and fix clipped text */
         .nav-links a {
             margin-left: 30px;
             text-decoration: none;
             color: #cfefff;
             transition: 0.3s;
             font-size: 16px;
-            line-height: 2 !important; /* Fixes half-visible letters */
-            
-            /* FORCE RESET for the Register Now box */
+            line-height: 2 !important;
             background: transparent !important;
-            background-color: transparent !important;
             border: none !important;
-            padding: 0 !important;
-            appearance: none !important;
-            -webkit-appearance: none !important;
-            box-shadow: none !important;
         }
 
         .nav-links a:hover {
@@ -129,6 +120,7 @@
             text-decoration: none;
             transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+            display: inline-block;
         }
 
         .btn:hover {
@@ -136,7 +128,7 @@
             box-shadow: 0 0 25px #00eaffaa;
         }
 
-        /* NEW LOCATION SECTION */
+        /* LOCATION SECTION */
         #location {
             padding: 100px 20px;
             text-align: center;
@@ -152,12 +144,19 @@
             box-shadow: 0 0 30px rgba(0, 119, 255, 0.15);
         }
 
+        .address-details {
+            text-align: center;
+            color: #cfefff;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
         .map-container {
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #00eaff;
-            margin: 25px 0;
             /* Futuristic Dark Map Filter */
             filter: grayscale(1) invert(0.9) hue-rotate(180deg) brightness(0.9);
             transition: 0.5s ease;
@@ -172,13 +171,6 @@
             height: 450px;
             border: none;
             display: block;
-        }
-
-        .address-details {
-            text-align: left;
-            color: #cfefff;
-            font-size: 16px;
-            line-height: 1.6;
         }
 
         footer {
@@ -211,18 +203,21 @@
     <section id="location">
         <h2 style="color: #00eaff; font-size: 36px; margin-bottom: 30px;">Event Location</h2>
         <div class="location-card">
-            <h3 style="color: #00eaff; margin-bottom: 10px;">Seshadripuram First Grade College</h3>
+            <div class="address-details">
+                <h3 style="color: #00eaff; margin-bottom: 10px;">Seshadripuram First Grade College</h3>
+                <p><strong>Address:</strong> C.A., Site No. 26, Yelahanka New Town, Bengaluru, Karnataka 560064</p>
+            </div>
             
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.234606622879!2d77.5947475757912!3d13.084300312356535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1184b2c13b05%3A0x2bae303ca3a3c156!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.6457316719544!2d77.59461287474436!3d13.089947987236526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1a87b22c3b05%3A0x28aa603ce0a3c156!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
                     allowfullscreen="" 
-                    loading="lazy">
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
 
-            <div class="address-details">
-                <p><strong>Address:</strong> C.A., Site No. 26, Yelahanka New Town, Bengaluru, Karnataka 560064</p>
+            <div class="address-details" style="margin-top: 20px;">
                 <p><strong>Contact:</strong> hackathon@sfgc.ac.in</p>
             </div>
         </div>
