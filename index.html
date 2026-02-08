@@ -6,205 +6,191 @@
     <title>Hackathon 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: #020412;
             color: white;
+            font-family: 'Georgia', serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            font-family: 'Georgia', serif; /* Body stays Georgia */
         }
 
-        /* --- THE BACKGROUND (STAYS FIXED BEHIND) --- */
+        /* --- BACKGROUND ANIMATION LAYER --- */
         #bg-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Puts it behind everything */
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
         }
-
-        #bg-canvas {
-            display: block;
-        }
-
+        #bg-canvas { display: block; }
         .star {
-            position: fixed;
-            background: white;
-            border-radius: 50%;
-            z-index: -2;
+            position: absolute; background: white; border-radius: 50%;
             animation: twinkle var(--duration) infinite ease-in-out;
         }
-
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
         }
 
-        /* --- YOUR ORIGINAL CONTENT LAYOUT --- */
+        /* --- NAVIGATION --- */
         nav {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            padding: 25px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
+            position: fixed; top: 0; width: 100%; padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 4, 18, 0.8); z-index: 100;
             font-family: 'Orbitron', sans-serif;
+            border-bottom: 1px solid rgba(0, 234, 255, 0.3);
         }
+        .logo { color: #00eaff; font-weight: bold; font-size: 22px; letter-spacing: 2px; }
+        .nav-links a { color: #cfefff; text-decoration: none; margin-left: 25px; font-size: 14px; transition: 0.3s; }
+        .nav-links a:hover { color: #00eaff; text-shadow: 0 0 10px #00eaff; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 24px;
-            color: #00eaff;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
-
-        .logo img { width: 40px; margin-right: 12px; }
-
-        .nav-links a {
-            margin-left: 30px;
-            text-decoration: none;
-            color: #cfefff;
-            transition: 0.3s;
-            font-size: 16px;
-        }
-
+        /* --- HERO SECTION --- */
         .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            flex-direction: column;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding-top: 80px;
         }
-
         .hero h1 {
-            font-size: 60px;
+            font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 8vw, 65px);
             background: linear-gradient(90deg, #00eaff, #0077ff);
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
+            -webkit-background-clip: text; color: transparent; margin-bottom: 20px;
         }
-
         .btn {
-            padding: 16px 40px;
-            border-radius: 12px;
-            font-size: 18px;
+            padding: 15px 35px; border-radius: 8px; font-family: 'Orbitron', sans-serif;
             background: linear-gradient(90deg, #00eaff, #0077ff);
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
-            font-family: 'Orbitron', sans-serif;
+            color: white; text-decoration: none; font-weight: bold;
+            box-shadow: 0 0 20px rgba(0, 234, 255, 0.4); transition: 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 234, 255, 0.6); }
+
+        /* --- SUB-SECTION STYLING --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 100px 20px; }
+        
+        .sub-section {
+            background: rgba(0, 234, 255, 0.05);
+            border: 1px solid rgba(0, 234, 255, 0.2);
+            border-left: 4px solid #00eaff;
+            padding: 40px; border-radius: 12px; margin-bottom: 50px;
+            backdrop-filter: blur(5px);
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif; color: #00eaff;
+            font-size: 32px; margin-bottom: 20px; letter-spacing: 1px;
         }
 
-        section { padding: 80px 60px; text-align: center; }
-        section h2 { font-family: 'Orbitron', sans-serif; font-size: 40px; color: #00eaff; margin-bottom: 20px; }
+        p { line-height: 1.8; color: #cfefff; font-size: 18px; }
 
-        .location { background: rgba(0, 119, 255, 0.1); border: 1px solid #0077ff; border-radius: 12px; padding: 20px; max-width: 800px; margin: 0 auto; }
-        .map-container iframe { width: 100%; height: 300px; border-radius: 12px; border: none; }
+        .details-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; margin-top: 25px;
+        }
 
-        footer { padding: 40px; text-align: center; border-top: 1px solid #00eaff; font-size: 14px; }
+        .detail-card {
+            background: rgba(255, 255, 255, 0.05); padding: 20px;
+            border-radius: 8px; text-align: center;
+        }
+
+        .detail-card h3 { font-family: 'Orbitron', sans-serif; font-size: 16px; color: #00eaff; margin-bottom: 10px; }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(0, 234, 255, 0.2); font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <div id="bg-container">
-        <canvas id="bg-canvas"></canvas>
-    </div>
+    <div id="bg-container"><canvas id="bg-canvas"></canvas></div>
 
     <nav>
-        <div class="logo">
-            <img src="logo.png" alt="Icon">
-            HACKATHON
-        </div>
+        <div class="logo">SFGC HACKATHON</div>
         <div class="nav-links">
             <a href="#hero">Home</a>
             <a href="#about">About</a>
-            <a href="#events">Events</a>
-            <a href="#location">Locations</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#location">Location</a>
         </div>
     </nav>
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
-        <p style="margin-bottom: 40px; color: #9fdfff;">Innovate • Build • Transform the Future</p>
+        <p style="margin-bottom: 30px; font-size: 20px; color: #9fdfff;">Code the Future. Build the Beyond.</p>
         <a href="#" class="btn">Register Now</a>
     </div>
 
-    <section id="about">
-        <h2>About</h2>
-        <p style="max-width: 800px; margin: 0 auto; color: #cfefff;">Seshadripuram First Grade College (SFGC) Yelahanka innovation marathon.</p>
-    </section>
+    <div class="container">
+        <div id="about" class="sub-section">
+            <h2>About the Event</h2>
+            <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour innovation marathon is hosted by the Computer Dept to empower students with real-world problem-solving skills.</p>
+        </div>
 
-    <section id="location">
-        <h2>Location</h2>
-        <div class="location">
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?..." allowfullscreen=""></iframe>
+        <div id="schedule" class="sub-section">
+            <h2>Event Highlights</h2>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>Duration</h3>
+                    <p>24 Hours</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Teams</h3>
+                    <p>2-4 Members</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Prizes</h3>
+                    <p>Exciting Awards</p>
+                </div>
             </div>
         </div>
-    </section>
+
+        <div id="location" class="sub-section">
+            <h2>Location</h2>
+            <p>SFGC Campus, Yelahanka New Town, Bengaluru, Karnataka 560064.</p>
+            <div style="margin-top:20px; height: 300px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid #00eaff; display:flex; justify-content:center; align-items:center;">
+                <p style="font-size: 14px; opacity: 0.6;">[Map Placeholder]</p>
+            </div>
+        </div>
+    </div>
 
     <footer>
-        <p>© 2024 Seshadripuram First Grade College Computer Dept.</p>
+        <p>© 2024 Seshadripuram First Grade College | Computer Science Department</p>
     </footer>
 
     <script>
-        // STARS
-        function initStars() {
-            for (let i = 0; i < 150; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + 'vw';
-                star.style.top = Math.random() * 100 + 'vh';
-                const size = Math.random() * 2 + 1 + 'px';
-                star.style.width = size; star.style.height = size;
-                star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-                document.getElementById('bg-container').appendChild(star);
-            }
+        // STARS GENERATION
+        const container = document.getElementById('bg-container');
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            const size = Math.random() * 2 + 1 + 'px';
+            star.style.width = size; star.style.height = size;
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            container.appendChild(star);
         }
 
-        // MATRIX
+        // MATRIX RAIN
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, columns, drops;
-
-        function resize() {
+        function init() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             columns = Math.floor(width / 20);
             drops = Array(columns).fill(1);
         }
-
-        function drawMatrix() {
+        function draw() {
             ctx.fillStyle = "rgba(2, 4, 18, 0.1)";
             ctx.fillRect(0, 0, width, height);
             ctx.fillStyle = "#00eaff";
             ctx.font = "15px monospace";
             for (let i = 0; i < drops.length; i++) {
-                const text = String.fromCharCode(Math.random() * 128);
+                const text = String.fromCharCode(0x30A0 + Math.random() * 96);
                 ctx.fillText(text, i * 20, drops[i] * 20);
                 if (drops[i] * 20 > height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
-
-        window.addEventListener('resize', resize);
-        resize();
-        initStars();
-        setInterval(drawMatrix, 50);
+        window.onresize = init;
+        init();
+        setInterval(draw, 50);
     </script>
 </body>
 </html>
