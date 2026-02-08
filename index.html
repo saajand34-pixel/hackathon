@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Orbitron', sans-serif; /* Changed back to Orbitron for futuristic look */
         }
 
         body {
@@ -18,6 +17,7 @@
             color: white;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            font-family: 'Georgia', serif; /* Default to Georgia for body text */
         }
 
         /* Animated futuristic glow */
@@ -40,7 +40,7 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Navbar - Removed black box background */
+        /* Navbar - Keep Orbitron */
         nav {
             position: absolute;
             top: 0;
@@ -50,6 +50,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 10;
+            font-family: 'Orbitron', sans-serif; /* Override to keep futuristic */
             /* Removed background and backdrop-filter to eliminate the black box */
         }
 
@@ -134,6 +135,14 @@
             color: transparent;
             margin-bottom: 20px;
             line-height: 1.2;
+            font-family: 'Orbitron', sans-serif; /* Keep futuristic for title */
+        }
+
+        .hero p {
+            color: #9fdfff;
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-family: 'Georgia', serif; /* Specified text: Georgia */
         }
 
         /* The Button in Hero only */
@@ -149,6 +158,7 @@
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
             display: inline-block;
+            font-family: 'Orbitron', sans-serif; /* Keep futuristic for button */
         }
 
         .btn:hover {
@@ -168,14 +178,7 @@
             font-size: 40px;
             color: #00eaff;
             margin-bottom: 20px;
-        }
-
-        section p {
-            color: #9fdfff;
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            font-family: 'Orbitron', sans-serif; /* Keep futuristic for headings */
         }
 
         /* About Sub-Sections */
@@ -187,6 +190,7 @@
             font-size: 30px;
             color: #00eaff;
             margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif; /* Keep futuristic for sub-headings */
         }
 
         .about-content {
@@ -202,6 +206,15 @@
             margin-bottom: 20px;
             border: none;
             background: transparent;
+        }
+
+        .about-content p {
+            color: #9fdfff;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-family: 'Georgia', serif; /* Specified text: Georgia for about paragraphs */
         }
 
         /* Events List */
@@ -243,10 +256,12 @@
         .event-item h3 {
             color: #00eaff;
             margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif; /* Keep futuristic for event titles */
         }
 
         .event-item p {
             color: #cfefff;
+            /* Inherits Georgia from body */
         }
 
         /* Location */
@@ -263,6 +278,7 @@
         .location h3 {
             color: #00eaff;
             margin-bottom: 20px;
+            font-family: 'Georgia', serif; /* Specified text: Georgia for location title */
         }
 
         /* Google Map as Main - Smaller size */
@@ -286,6 +302,11 @@
 
         .address-details p {
             margin-bottom: 10px;
+            font-family: 'Georgia', serif; /* Specified text: Georgia for address */
+        }
+
+        .address-details p:nth-child(2) {
+            font-family: 'Georgia', serif; /* Specified text: Georgia for contact */
         }
 
         /* Footer */
@@ -295,6 +316,7 @@
             background: rgba(2, 4, 18, 0.9);
             color: #9fdfff;
             border-top: 1px solid #00eaff;
+            font-family: 'Georgia', serif; /* Specified text: Georgia for footer */
         }
 
         footer p {
@@ -416,7 +438,7 @@
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
-        <p style="color: #9fdfff; font-size: 18px; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
+        <p>Innovate • Build • Transform the Future</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform?usp=dialog" target="_blank" class="btn">Register Now</a>
     </div>
 
@@ -476,7 +498,7 @@
             </div>
             <div class="address-details">
                 <p><strong>Address:</strong> Seshadripuram First Grade College, Yelahanka, Bengaluru 560064, Karnataka</p>
-                <p><strong>Contact:</strong> hackathon@xyzuni.edu | Phone: +1 (123) 456-7890</p>
+                <p><strong>Contact:</strong> hackathon@xyzuni.edu</p>
             </div>
         </div>
     </section>
@@ -489,8 +511,4 @@
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         hamburger.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-    </script>
-</body>
-</html>
+            navLinks.style.display = navLinks.style.display ===
