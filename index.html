@@ -374,4 +374,11 @@
             }
         }
         window.onresize = init;
-        init
+        init();
+        setInterval(draw, 50);
+
+        // HAMBURGER MENU
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            nav
