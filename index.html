@@ -5,161 +5,223 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuristic Hackathon 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background: #020412;
+            background: #020412; /* Deep space black */
             color: white;
-            font-family: 'Georgia', serif; /* Main body text as seen in images */
             overflow-x: hidden;
             scroll-behavior: smooth;
+            font-family: 'Georgia', serif; /* Body stays Georgia as seen in About section */
         }
 
-        /* --- FIXED ANIMATION BACKGROUND --- */
-        #bg-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
+        /* --- THE ANIMATION LAYER --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Puts animation behind everything */
+            pointer-events: none; /* Allows you to click buttons through the animation */
         }
-        #bg-canvas { display: block; }
+
         .star {
-            position: absolute; background: white; border-radius: 50%;
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            z-index: -2; /* Stars are the furthest back layer */
             animation: twinkle var(--duration) infinite ease-in-out;
         }
+
         @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.2); }
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* --- NAVIGATION (AS PER IMAGE) --- */
+        /* --- YOUR ORIGINAL CONTENT (STAYING SAME) --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 15px 40px;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(2, 4, 18, 0.9); z-index: 100;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
             font-family: 'Orbitron', sans-serif;
-            border-bottom: 1px solid rgba(0, 234, 255, 0.2);
         }
-        .logo-group { display: flex; align-items: center; gap: 15px; }
-        .logo-group img { height: 50px; } /* Seshadripuram Logo */
-        .logo-text { color: #00eaff; font-weight: bold; font-size: 20px; letter-spacing: 2px; }
-        
-        .nav-links a { 
-            color: white; text-decoration: none; margin-left: 20px; 
-            font-size: 14px; text-transform: uppercase; transition: 0.3s; 
-        }
-        .nav-links a:hover { color: #00eaff; text-shadow: 0 0 10px #00eaff; }
 
-        /* --- HERO SECTION --- */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            color: #00eaff; /* Cyan branding */
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .logo-container img { 
+            width: 50px; 
+            margin-right: 12px; 
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #cfefff;
+            font-size: 16px;
+        }
+
         .hero {
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
+
         .hero h1 {
-            font-family: 'Orbitron', sans-serif; font-size: 60px;
-            color: #00eaff; text-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
-            margin-bottom: 10px;
+            font-size: clamp(40px, 8vw, 80px);
+            background: linear-gradient(90deg, #00eaff, #0077ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif; /* Heading stays Orbitron */
         }
-        .hero h2 { font-family: 'Orbitron', sans-serif; font-size: 45px; color: #00eaff; margin-bottom: 25px; }
-        .hero p { font-size: 18px; color: #9fdfff; margin-bottom: 35px; letter-spacing: 1px; }
 
         .btn {
-            padding: 15px 40px; border-radius: 10px; font-family: 'Orbitron', sans-serif;
-            background: #00eaff; color: #020412; text-decoration: none; 
-            font-weight: bold; box-shadow: 0 0 20px rgba(0, 234, 255, 0.4); transition: 0.3s;
-        }
-        .btn:hover { background: #0077ff; color: white; transform: scale(1.05); }
-
-        /* --- SUB-SECTION SYSTEM --- */
-        .content-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
-        
-        .sub-section {
-            background: rgba(0, 234, 255, 0.03);
-            border: 1px solid rgba(0, 234, 255, 0.2);
-            padding: 50px; border-radius: 15px; margin-bottom: 60px;
-            backdrop-filter: blur(8px);
-        }
-        
-        .sub-section h3 {
-            font-family: 'Orbitron', sans-serif; color: #00eaff;
-            font-size: 35px; margin-bottom: 25px; border-bottom: 2px solid #00eaff;
-            display: inline-block; padding-bottom: 5px;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            background: linear-gradient(90deg, #00eaff, #0077ff);
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
         }
 
-        .sub-section p { line-height: 1.8; color: #cfefff; font-size: 19px; }
+        /* Sub-sections organized clearly */
+        section {
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            background: rgba(2, 4, 18, 0.5); /* Semi-transparent to see animation */
+            backdrop-filter: blur(5px);
+            margin: 20px 0;
+            border-top: 1px solid rgba(0, 234, 255, 0.2);
+        }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(0, 234, 255, 0.2); font-size: 14px; opacity: 0.7; }
+        section h2 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 40px; 
+            color: #00eaff; 
+            margin-bottom: 20px; 
+        }
+
+        .details-container {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 18px;
+            color: #cfefff;
+        }
+
+        footer { 
+            padding: 40px; 
+            text-align: center; 
+            border-top: 1px solid #00eaff; 
+            position: relative; 
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
 
-    <div id="bg-container"><canvas id="bg-canvas"></canvas></div>
+    <canvas id="bg-canvas"></canvas>
 
     <nav>
-        <div class="logo-group">
-            <img src="https://i.imgur.com/your-logo-path.png" alt="S Logo"> <div class="logo-text">HACKATHON</div>
+        <div class="logo-container">
+            <img src="https://i.imgur.com/your-logo.png" alt="S Logo"> HACKATHON
         </div>
         <div class="nav-links">
-            <a href="#home">Home</a>
+            <a href="#hero">Home</a>
             <a href="#about">About</a>
             <a href="#events">Events</a>
-            <a href="#location">Locations</a>
+            <a href="#location">Location</a>
         </div>
     </nav>
 
-    <div id="home" class="hero">
-        <h1>FUTURISTIC HACKATHON</h1>
-        <h2>2024</h2>
-        <p>Innovate • Build • Transform the Future</p>
+    <div id="hero" class="hero">
+        <h1>FUTURISTIC HACKATHON 2024</h1>
+        <p style="color: #9fdfff; font-size: 20px; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
         <a href="#" class="btn">Register Now</a>
     </div>
 
-    <div class="content-container">
-        <div id="about" class="sub-section">
-            <h3>About</h3>
-            <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour innovation event is hosted by the Computer Dept to challenge and inspire the next generation of tech leaders.</p>
+    <section id="about">
+        <h2>About</h2>
+        <div class="details-container">
+            <p>Seshadripuram First Grade College (SFGC) is a premier institution in Yelahanka. This 24-hour innovation event is hosted by the Computer Dept to inspire technical creativity.</p>
         </div>
+    </section>
 
-        <div id="location" class="sub-section">
-            <h3>Location</h3>
-            <p>The event takes place at our Yelahanka Campus: Yelahanka New Town, Bengaluru, Karnataka 560064.</p>
-            <div style="margin-top:30px; border: 1px solid #00eaff; border-radius: 10px; overflow: hidden; height: 350px;">
-                <div style="width:100%; height:100%; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; color:#00eaff;">[Google Maps Embed Here]</div>
+    <section id="location">
+        <h2>Location</h2>
+        <div class="details-container">
+            <p>Yelahanka New Town, Bengaluru, Karnataka 560064.</p>
+            <div style="margin-top: 30px; border: 1px solid #00eaff; border-radius: 12px; height: 300px; overflow: hidden;">
+                <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;" allowfullscreen=""></iframe>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
         <p>© 2024 Seshadripuram First Grade College | Computer Science Department</p>
     </footer>
 
     <script>
-        // --- STARFIELD LOGIC ---
-        const container = document.getElementById('bg-container');
-        for (let i = 0; i < 150; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            const size = Math.random() * 2 + 1 + 'px';
-            star.style.width = size; star.style.height = size;
-            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-            container.appendChild(star);
+        // 1. GENERATE STARFIELD
+        function createStars() {
+            const count = 150;
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                const size = Math.random() * 2 + 1 + 'px';
+                star.style.width = size; star.style.height = size;
+                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+                document.body.appendChild(star);
+            }
         }
+        createStars();
 
-        // --- MATRIX RAIN LOGIC ---
+        // 2. MATRIX RAIN
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, columns, drops;
-        function init() {
+
+        function initMatrix() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             columns = Math.floor(width / 20);
             drops = Array(columns).fill(1);
         }
-        function draw() {
-            ctx.fillStyle = "rgba(2, 4, 18, 0.1)"; // Controls the tail length
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(2, 4, 18, 0.1)"; // Trails
             ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = "#00eaff"; // Cyan color from branding
+            ctx.fillStyle = "#00eaff"; // Cyan color from image
             ctx.font = "15px monospace";
             for (let i = 0; i < drops.length; i++) {
                 const text = String.fromCharCode(0x30A0 + Math.random() * 96);
@@ -168,9 +230,10 @@
                 drops[i]++;
             }
         }
-        window.onresize = init;
-        init();
-        setInterval(draw, 50);
+
+        window.addEventListener('resize', initMatrix);
+        initMatrix();
+        setInterval(drawMatrix, 50);
     </script>
 </body>
 </html>
