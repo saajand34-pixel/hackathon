@@ -63,10 +63,9 @@
         }
 
         .logo img {
-            width: 60px; /* Increased from 50px for better visibility */
-            height: 60px; /* Increased from 50px for better visibility */
+            width: 60px;
+            height: 60px;
             margin-right: 10px;
-            /* Plain logo: no border, no border-radius, no box-shadow */
         }
 
         .nav-links {
@@ -198,11 +197,24 @@
             width: 300px;
             transition: 0.3s;
             box-shadow: 0 2px 10px rgba(0, 234, 255, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        .event-item:nth-child(1) { animation-delay: 0.2s; }
+        .event-item:nth-child(2) { animation-delay: 0.4s; }
+        .event-item:nth-child(3) { animation-delay: 0.6s; }
+        .event-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .event-item:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px #00eaffaa;
+            background: rgba(0, 234, 255, 0.2);
         }
 
         .event-item h3 {
@@ -261,8 +273,8 @@
                 font-size: 18px;
             }
             .logo img {
-                width: 50px; /* Increased from 40px for better visibility on mobile */
-                height: 50px; /* Increased from 40px for better visibility on mobile */
+                width: 50px;
+                height: 50px;
             }
             .nav-links {
                 display: none;
@@ -285,10 +297,12 @@
             .hero {
                 height: 100vh;
                 padding: 0 15px;
+                padding-top: 80px; /* Extra padding to avoid nav overlap */
             }
             .hero h1 {
-                font-size: 36px;
+                font-size: 28px; /* Reduced from 36px for full visibility */
                 margin-bottom: 15px;
+                line-height: 1.2; /* Better line height */
             }
             .hero p {
                 font-size: 16px;
@@ -301,6 +315,7 @@
             }
             section {
                 padding: 60px 20px;
+                padding-top: 100px; /* Extra padding to avoid nav overlap */
             }
             section h2 {
                 font-size: 28px;
