@@ -113,8 +113,9 @@
                 height: 30px;
             }
             .nav-links {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 10px;
                 margin-left: 0;
             }
@@ -123,9 +124,10 @@
                 font-size: 14px;
                 text-align: center;
                 padding: 5px 0;
+                flex: 0 0 48%; /* Two per line for first four */
             }
             .nav-links a:nth-child(5) {
-                grid-column: span 2; /* Contact spans both columns for third line */
+                flex: 0 0 100%; /* Contact full width for third line */
             }
             .hero {
                 padding-top: 100px;
