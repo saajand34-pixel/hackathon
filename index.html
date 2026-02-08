@@ -79,11 +79,11 @@
 
         /* Link Fix: Removes white box and fixes text clipping */
         .nav-links a {
-            margin-left: 20px; /* Reduced for more links */
+            margin-left: 30px;
             text-decoration: none;
             color: #cfefff;
             transition: 0.3s;
-            font-size: 14px; /* Smaller for more links */
+            font-size: 16px;
             line-height: 1.5; /* Ensures letters are fully visible */
             
             /* CSS Reset to kill the white/gray box */
@@ -176,6 +176,22 @@
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto 40px;
+        }
+
+        /* About Sections with Logo */
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .about-content img {
+            width: 60px;
+            height: auto;
+            margin-bottom: 20px;
+            border: none;
+            background: transparent;
         }
 
         /* Events List */
@@ -340,6 +356,9 @@
                 line-height: 1.5;
                 margin-bottom: 30px;
             }
+            .about-content img {
+                width: 50px;
+            }
             .events-list {
                 flex-direction: column;
                 align-items: center;
@@ -375,9 +394,7 @@
         </div>
         <div class="nav-links" id="nav-links">
             <a href="#hero">Home</a>
-            <a href="#about-set">About SET</a>
-            <a href="#about-sfgc">About SFGC</a>
-            <a href="#about-hackathon">About Hackathon</a>
+            <a href="#about-set">About</a>
             <a href="#events">Events</a>
             <a href="#location">Locations</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform?usp=dialog" target="_blank">Register</a>
@@ -395,17 +412,26 @@
 
     <section id="about-set">
         <h2>About SET</h2>
-        <p>Seshadripuram Educational Trust (SET) is a renowned organization dedicated to providing quality education.</p>
+        <div class="about-content">
+            <img src="logo.png" alt="SET Logo">
+            <p>Seshadripuram Educational Trust (SET) is a renowned organization dedicated to providing quality education.</p>
+        </div>
     </section>
 
     <section id="about-sfgc">
         <h2>About SFGC</h2>
-        <p>Seshadripuram First Grade College (SFGC), under SET, is a premier institution offering programs in Software Engineering Technology and other disciplines.</p>
+        <div class="about-content">
+            <img src="logo.png" alt="SFGC Logo">
+            <p>Seshadripuram First Grade College (SFGC), under SET, is a premier institution offering programs in Software Engineering Technology and other disciplines.</p>
+        </div>
     </section>
 
     <section id="about-hackathon">
         <h2>About Hackathon</h2>
-        <p>Hackathon 2024 is a 24-hour innovation marathon organized by the Computer Department at SFGC, where tech enthusiasts come together to build groundbreaking solutions. Join us at SFGC to collaborate, code, and create the future of technology.</p>
+        <div class="about-content">
+            <img src="logo.png" alt="Hackathon Logo">
+            <p>Hackathon 2024 is a 24-hour innovation marathon organized by the Computer Department at SFGC, where tech enthusiasts come together to build groundbreaking solutions. Join us at SFGC to collaborate, code, and create the future of technology.</p>
+        </div>
     </section>
 
     <section id="events">
