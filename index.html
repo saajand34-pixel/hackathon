@@ -231,7 +231,7 @@
         document.body.appendChild(star);
     }
 
-    // MATRIX RAIN (Falling Characters - Star Rain Effect)
+    // MATRIX RAIN (Falling Numbers - Star Rain Effect)
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     let width, height, columns, drops;
@@ -247,7 +247,7 @@
         ctx.fillStyle = "#00eaff";
         ctx.font = "15px monospace";
         for (let i = 0; i < drops.length; i++) {
-            const text = String.fromCharCode(0x30A0 + Math.random() * 96);
+            const text = Math.floor(Math.random() * 10).toString(); // Numbers 0-9
             ctx.fillText(text, i * 20, drops[i] * 20);
             if (drops[i] * 20 > height && Math.random() > 0.975) drops[i] = 0;
             drops[i]++;
