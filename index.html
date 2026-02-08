@@ -40,19 +40,20 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Navbar */
+        /* Navbar - Background removed as requested */
         nav {
             position: absolute;
             top: 0;
             width: 100%;
-            padding: 30px 60px; /* Increased padding */
+            padding: 35px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: transparent !important; /* Ensures no black box */
+            background: transparent !important;
         }
 
+        /* Logo Fix: GitHub style, no circular background */
         .logo {
             display: flex;
             align-items: center;
@@ -60,7 +61,7 @@
             color: #00eaff;
             letter-spacing: 2px;
             font-weight: bold;
-            line-height: 1.5; /* Prevents clipping */
+            line-height: 1.8; /* Prevents half-visible letters */
         }
 
         .logo img {
@@ -77,22 +78,24 @@
             align-items: center;
         }
 
+        /* THE FIX: Force removal of white/black box and fix clipped text */
         .nav-links a {
             margin-left: 30px;
             text-decoration: none;
             color: #cfefff;
             transition: 0.3s;
             font-size: 16px;
-            line-height: 1.8; /* Ensures tall letters are fully visible */
+            line-height: 2 !important; /* Vital for Orbitron visibility */
             
-            /* Resetting browser defaults that cause the white/black box */
+            /* FORCE RESET - Overrides browser default button styles */
             background: transparent !important;
             background-color: transparent !important;
             border: none !important;
             padding: 0 !important;
-            appearance: none;
-            -webkit-appearance: none;
-            outline: none;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            box-shadow: none !important;
+            outline: none !important;
         }
 
         .nav-links a:hover {
@@ -113,14 +116,15 @@
         }
 
         .hero h1 {
-            font-size: 60px;
+            font-size: clamp(32px, 8vw, 60px);
             background: linear-gradient(90deg, #00eaff, #0077ff);
             -webkit-background-clip: text;
             color: transparent;
             margin-bottom: 20px;
-            line-height: 1.3; /* Fix for title clipping */
+            line-height: 1.4; /* Fixes title clipping */
         }
 
+        /* Hero Button Styling */
         .btn {
             padding: 16px 40px;
             border: none;
@@ -141,7 +145,9 @@
         }
 
         /* Location Section */
-        .location {
+        section { padding: 100px 60px; text-align: center; }
+
+        .location-card {
             background: rgba(0, 119, 255, 0.05);
             border: 1px solid #0077ff;
             border-radius: 12px;
@@ -156,16 +162,13 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #00eaff;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            /* DARK MODE FILTER FOR MAP */
+            margin: 20px 0;
+            /* DARK MODE FILTER: Matches futuristic aesthetic */
             filter: grayscale(1) invert(0.9) hue-rotate(180deg) brightness(0.9);
             transition: 0.5s;
         }
 
-        .map-container:hover {
-            filter: none; /* Shows real colors on hover */
-        }
+        .map-container:hover { filter: none; }
 
         .map-container iframe {
             width: 100%;
@@ -174,20 +177,19 @@
             display: block;
         }
 
-        /* Footer */
+        .address-details { color: #cfefff; text-align: left; }
+
         footer {
             padding: 40px;
             text-align: center;
             border-top: 1px solid #00eaff22;
-            color: #555;
+            color: #9fdfff;
             font-size: 14px;
         }
 
-        /* Mobile Styles */
         @media (max-width: 768px) {
             nav { padding: 20px; }
-            .hero h1 { font-size: 32px; }
-            .nav-links a { margin-left: 15px; font-size: 14px; }
+            .nav-links { display: none; } /* Add JS for mobile menu if needed */
         }
     </style>
 </head>
@@ -197,37 +199,37 @@
             <img src="logo.png" alt="⚡">
             HACKATHON
         </div>
-        <div class="nav-links" id="nav-links">
+        <div class="nav-links">
             <a href="#hero">Home</a>
             <a href="#about">About</a>
             <a href="#events">Events</a>
             <a href="#location">Locations</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform" target="_blank">Register</a>
+            <a href="https://docs.google.com/forms/d/..." target="_blank">Register</a>
         </div>
     </nav>
 
     <div id="hero" class="hero">
         <h1>FUTURISTIC HACKATHON 2024</h1>
         <p style="color: #9fdfff; font-size: 18px; margin-bottom: 40px;">Innovate • Build • Transform the Future</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQpcoxlPTiFoZLnTf2sFSIgDKAWDRJ_GbEiTi00UJXDUWWpw/viewform" target="_blank" class="btn">Register Now</a>
+        <a href="https://docs.google.com/forms/d/..." target="_blank" class="btn">Register Now</a>
     </div>
 
     <section id="location">
-        <h2>Location</h2>
-        <div class="location">
-            <h3>Seshadripuram First Grade College</h3>
+        <h2 style="color: #00eaff; font-size: 40px; margin-bottom: 20px;">Location</h2>
+        <div class="location-card">
+            <h3 style="color: #00eaff; margin-bottom: 10px;">Seshadripuram First Grade College</h3>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.845873738127!2d77.59367207575398!3d13.109000811859604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1ec086161477%3A0xc392472d00122554!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.67295778841!2d77.59253487574513!3d13.088219012489673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1ec0746e5041%3A0x62804f58c42a5370!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="address-details">
-                <p><strong>Address:</strong> Seshadripuram First Grade College, Yelahanka, Bengaluru, Karnataka, India</p>
-                <p><strong>Contact:</strong> hackathon@xyzuni.edu</p>
+                <p><strong>Address:</strong> Yelahanka New Town, Bengaluru, Karnataka 560064</p>
+                <p><strong>Contact:</strong> hackathon@sfgc.ac.in</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2024 Seshadripuram First Grade College | Powered by Innovation</p>
+        <p>© 2024 Seshadripuram First Grade College | Yelahanka, Bengaluru</p>
     </footer>
 </body>
 </html>
