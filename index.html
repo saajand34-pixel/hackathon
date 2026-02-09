@@ -41,6 +41,13 @@
         .logo { display: flex; align-items: center; color: #00eaff; font-weight: bold; font-size: 22px; }
         .logo img { height: 40px; margin-right: 12px; }
         .nav-links a { color: #cfefff; text-decoration: none; margin-left: 25px; font-size: 15px; }
+        .hamburger {
+            display: none; flex-direction: column; cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px; height: 3px; background: #00eaff; margin: 3px 0;
+            transition: 0.3s;
+        }
 
         /* --- HERO --- */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
@@ -165,24 +172,16 @@
                 height: 30px;
             }
             .nav-links {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto auto auto;
-                gap: 10px;
-                margin-left: 0;
+                display: none; position: absolute; top: 60px; right: 20px;
+                background: rgba(2, 4, 18, 0.95); border: 1px solid #00eaff; border-radius: 8px;
+                padding: 15px; flex-direction: column; box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
             }
-            .nav-links a {
-                margin-left: 0;
-                font-size: 14px;
-                text-align: center;
-                padding: 5px 0;
+            .nav-links.active {
+                display: flex;
             }
-            .nav-links a:nth-child(1) { grid-column: 1; grid-row: 1; }
-            .nav-links a:nth-child(2) { grid-column: 2; grid-row: 1; }
-            .nav-links a:nth-child(3) { grid-column: 1; grid-row: 2; }
-            .nav-links a:nth-child(4) { grid-column: 2; grid-row: 2; }
-            .nav-links a:nth-child(5) { grid-column: 1; grid-row: 3; }
-            .nav-links a:nth-child(6) { grid-column: 2; grid-row: 3; }
+            .hamburger {
+                display: flex;
+            }
             .hero {
                 padding-top: 100px;
             }
@@ -226,13 +225,16 @@
             <img src="logo.png" alt="S Logo">
             HACKATHON
         </div>
-        <div class="nav-links">
+        <div class="nav-links" id="nav-links">
             <a href="#hero">Home</a>
             <a href="#set">SET</a>
             <a href="#sfgc">SFGC</a>
             <a href="#hackathon">Hackathon</a>
             <a href="#events">Events</a>
             <a href="#location">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div><div></div><div></div>
         </div>
     </nav>
 
@@ -286,7 +288,7 @@
         <div id="location" class="sub-section">
             <h2>Contact & Location</h2>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248703.6403007425!2d77.46512122631346!3d13.099542418228534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1887b21c3b05%3A0x3caae03cb8a3c156!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sus!4v1770562549683!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248703.6403007425!2d77.46512122631346!3d13.099542418228534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1887b21c3b05%3:A0x3caae03cb8a3c156!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sus!4v1770562549683!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="contact-box">
                 <div class="info-card"><b>Phone</b> +91 85500 01683</div>
@@ -338,6 +340,13 @@
     window.onresize = init;
     init();
     setInterval(draw, 50);
+
+    // HAMBURGER MENU
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
 </script>
 </body>
 </html>
