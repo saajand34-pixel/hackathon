@@ -40,7 +40,26 @@
         }
         .logo { display: flex; align-items: center; color: #00eaff; font-weight: bold; font-size: 22px; }
         .logo img { height: 40px; margin-right: 12px; }
-        .nav-links a { color: #cfefff; text-decoration: none; margin-left: 25px; font-size: 15px; }
+        .nav-links a {
+            position: relative;
+            color: #cfefff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00eaff;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
         .hamburger {
             display: none; flex-direction: column; cursor: pointer;
         }
