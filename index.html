@@ -33,6 +33,13 @@
         .logo { color: #00eaff; font-weight: bold; font-size: 22px; }
         .nav-links a { color: #cfefff; text-decoration: none; margin-left: 25px; font-size: 14px; transition: 0.3s; }
         .nav-links a:hover { color: #00eaff; }
+        .hamburger {
+            display: none; flex-direction: column; cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px; height: 3px; background: #00eaff; margin: 3px 0;
+            transition: 0.3s;
+        }
 
         /* --- HERO --- */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
@@ -56,6 +63,11 @@
             backdrop-filter: blur(8px); text-align: center;
         }
         .sub-section h2 { font-family: 'Orbitron', sans-serif; color: #00eaff; font-size: 32px; margin-bottom: 20px; }
+        .sub-section img {
+            width: 70px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px #00eaff);
+        }
         .sub-section p { line-height: 1.8; color: #cfefff; font-size: 17px; }
 
         /* --- EVENTS --- */
@@ -87,6 +99,66 @@
         .rules-text { text-align: left; color: #cfefff; margin: 20px 0; font-size: 15px; line-height: 1.6; border-top: 1px solid rgba(0,234,255,0.2); padding-top: 15px; }
 
         footer { text-align: center; padding: 40px; border-top: 1px solid rgba(0, 234, 255, 0.2); font-size: 14px; }
+
+        /* --- MOBILE STYLES --- */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            .logo {
+                font-size: 18px;
+            }
+            .nav-links {
+                display: none; position: absolute; top: 60px; right: 20px;
+                background: rgba(2, 4, 18, 0.95); border: 1px solid #00eaff; border-radius: 8px;
+                padding: 15px; flex-direction: column; box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                margin-left: 0;
+                font-size: 14px;
+                text-align: center;
+                padding: 10px 0;
+                margin-bottom: 10px;
+                display: block;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero {
+                padding-top: 100px;
+            }
+            .hero h1 {
+                font-size: clamp(25px, 6vw, 50px);
+            }
+            .container {
+                padding: 80px 15px;
+            }
+            .sub-section {
+                padding: 30px;
+                margin-bottom: 40px;
+            }
+            .sub-section h2 {
+                font-size: 24px;
+            }
+            .sub-section p {
+                font-size: 16px;
+            }
+            .events-list {
+                flex-direction: column; align-items: center; gap: 15px;
+            }
+            .event-item {
+                width: 100%; max-width: 350px; padding: 15px;
+            }
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+            footer {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -95,13 +167,16 @@
 
     <nav>
         <div class="logo">SFGC HACKATHON</div>
-        <div class="nav-links">
+        <div class="nav-links" id="nav-links">
             <a href="#hero">Home</a>
             <a href="#about-set">About SET</a>
             <a href="#about-sfgc">About SFGC</a>
             <a href="#hackathon">Hackathon</a>
             <a href="#events">Events</a>
             <a href="#location">Reach Us</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div><div></div><div></div>
         </div>
     </nav>
 
@@ -114,16 +189,19 @@
     <div class="container">
         
         <div id="about-set" class="sub-section">
+            <img src="logo.png" alt="SET Logo">
             <h2>About SET</h2>
             <p><b>Seshadripuram Educational Trust (SET):</b> A pioneering institution in quality education since 1930. The trust manages 34+ institutions across Karnataka, fostering academic excellence for nearly a century.</p>
         </div>
 
         <div id="about-sfgc" class="sub-section">
+            <img src="logo.png" alt="SFGC Logo">
             <h2>About SFGC</h2>
             <p><b>SFGC Yelahanka:</b> Seshadripuram First Grade College is committed to providing contemporary education in Software Engineering and Technology. We prepare students with the skills required to excel in the global industry.</p>
         </div>
 
         <div id="hackathon" class="sub-section">
+            <img src="logo.png" alt="Hackathon Logo">
             <h2>The Hackathon 2026</h2>
             <p>This event is a 24-hour innovation marathon where students solve real-world problems through code. Participants get the chance to innovate, build, and showcase their talents to a panel of experts.</p>
         </div>
@@ -150,7 +228,7 @@
             <div class="contact-box">
                 <div class="info-card"><b>Phone</b> +91 85500 01683</div>
                 <div class="info-card"><b>Email</b> iks.sfgc@gmail.com</div>
-                <div class="info-card"><b>Address</b> Yelahanka New Town, Bengaluru - 560064</div>
+                <div class="info-card"><b>Address</b>Seshadripuram First Grade College (SFGC) C.A. Site No. 26, Yelahanka New Town, Bengaluru, Karnataka - 560064.</div>
             </div>
         </div>
     </div>
@@ -221,6 +299,13 @@
         }
         init(); setInterval(draw, 50);
         window.onresize = init;
+
+        // HAMBURGER MENU
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
